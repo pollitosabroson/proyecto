@@ -1,0 +1,58 @@
+body{
+	margin:0;
+	padding:0;
+	color:#000;
+	background:#efefef url(../css/img/grid.png) repeat center top;
+	font:normal 0.9em/150% 'Arimo', "Trebuchet MS", "arial, verdana", "sans-serif";
+	text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
+}
+
+.boxUniversal {
+  	background-color:#F6ECFD;
+  	border-right: #a5a7aa solid 2px;
+  	border-bottom: #a5a7aa solid 2px;
+  	float:center;
+  	padding:5px;
+	width:300px;
+	margin: auto;
+	margin-top: center;
+	border-radius:25px; 
+	-moz-border-radius:15px 55px
+	webkit-border-radius:15px 55px;
+}
+/* End caja universal */
+/* caja login */
+.boxlogin{
+	border-bottom:1px solid #d9d9d9;
+	color:#034895;
+	float:left;
+	font-weight:bold;
+	height:28px;
+	list-style-type:none;
+	text-decoration:none;
+	width:400px;
+	padding:3px 20px 0 42px;
+	
+}
+/* End cajo login */
+/* Contenido*/
+.Contenido{
+	width:800px;
+	margin: auto;
+	margin-top: auto; 
+	float:left;
+	text-align:left;
+}
+/* fin del contenido*/
+.Contenedor{
+	width:800px;
+	margin: auto;
+	margin-top: auto;
+
+}
+.titulo{
+	float:center;
+	margin: auto;
+	margin-top: center;
+	width:300px;
+}

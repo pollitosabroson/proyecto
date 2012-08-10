@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block titulo %}Nueva receta{% endblock %}
+{% block encabezado %} 
+	<h1>Agregar Paciente </h1>
+{% endblock %}
+{% block contenido %}
+	<form id='formulario' class="Contenido" method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+		{{datospaciente.as_p}}
+		{{observaciones.as_p}}
+		<p><input type='submit' value='Registrar'/></p>
+	</form>
+{% endblock %}

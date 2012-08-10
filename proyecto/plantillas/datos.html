@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block titulo %}Bienvenido{% endblock %}
+{% block encabezado %} 
+	<h1>Bienvenido</h1>
+{% endblock %}
+{% block contenido %}
+	<section class="boxUniversal">
+	<h5>Benvenido tu ultima sesion fue el {{usuario.last_login}}.</h5>
+	<h4>Nombre 
+		{{usuario.username|upper}}.</h4>
+	<h4>Apellidos 
+		{{usuario.first_name|upper}}.</h4>
+	<h4>Puesto 
+		{{usuario.last_name|upper}}</h4>
+	</section>
+	{% endblock %}

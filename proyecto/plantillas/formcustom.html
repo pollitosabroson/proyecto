@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block titulo %}Nueva receta{% endblock %}
+{% block encabezado %} 
+	<h1>Agregar Enfermedad </h1>
+{% endblock %}
+{% block contenido %}
+<form action ="/" id='formulario' method = "post">{% csrf_token %}
+	{{form.non_field_errors}}
+	<div class = "fieldWrapper">
+		{{form.enfermedades.errors}}
+		<label for = "id_enfermedades">Enfermedades</label>
+		<input for = "id_enfermedades" type = "text" name ="enfermedades" maxlength="100">
+		{{form.enfermedades}}
+	</div>
+	<div class = "fieldWrapper">
+		{{form.descripcionenfer.errors}}
+		<label for = "id_descripcionenfer">Descripcion de la enfermedad(es)</label>
+		<input for = "id_descripcionenfer" type = "text" name ="descripcionenfer" maxlength="300">
+		{{form.descripcionenfer}}
+	</div>
+	<div class = "fieldWrapper">
+		{{form.medicamento.errors}}
+		<label for = "id_medicamentos">Medicamentos</label>
+		<input for = "id_medicamentos" type = "text" name ="medicamento" maxlength="200">
+		{{form.medicamento}}
+	</div>
+	<div class = "fieldWrapper">
+		{{form.descripcion.errors}}
+		<label for = "id_descripcion">Descripcion de los medicamentos</label>
+		<input for = "id_descripcion" type = "text" name ="descripcion" maxlength="300">
+		{{form.descripcion}}
+	</div>
+	<div class = "fieldWrapper">
+		{{form.fecha.errors}}
+		<label for="Cita">Proxima cita</label>
+		<input type="text" value="" readonly name="theDate">
+		<input type="button" class="medium" value="Calendario" onclick="displayCalendar(document.forms[0].theDate,'yyyy-mm-dd',this)"></td></tr>
+	</div>
+	<p><input type="submit" value="Generar Reporte" /></p>
+</form>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE hmtl>
+<html lang ="es">
+<head>
+	<meta charset = " utf-8">
+	<title>Principal -  {% block titulo %}{% endblock%}</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script type="text/javascript" src="{{STATIC_URL}}js/prettify.js"></script>                                   <!-- PRETTIFY -->
+<script type="text/javascript" src="{{STATIC_URL}}js/kickstart.js"></script>                                  <!-- KICKSTART -->
+<script type="text/javascript" src="{{STATIC_URL}}js/ajax.js"></script>
+								<!--actualizar div-->
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
+{% block style_css %}{% endblock %}
+                         <!-- Calendario-->
+<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}dhtmlgoodies_calendar/dhtmlgoodies_calendar.css?random=20051112" media="screen"></LINK>
+	<SCRIPT type="text/javascript" src="{{STATIC_URL}}dhtmlgoodies_calendar/dhtmlgoodies_calendar.js?random=20060118"></script>
+</head>
+<body>
+	<section class = "header"></section>
+	<section class = "menuPrin">
+		<!-- Menu Horizontal -->
+	<ul class="menu">
+	<li class="current"><a href=""><span class="icon" data-icon="."></span>Citas</a>
+		<ul>
+			<li><a href="citas"><span class="icon" data-icon="G"></span> Citas del Día</a></li>
+		</ul>
+	</li>
+	<li><a href=""><span class="icon" data-icon="j" ></span>Indicadores</a>
+		<ul>
+			<li><a href="/grafica1"><span class="icon" data-icon="k"></span> Citas</a></li>
+			<li><a href="/grafica2"><span class="icon" data-icon="k"></span> Medicinas</a></li>
+			<li><a href="/grafica3"><span class="icon" data-icon="k"></span>Enfermedades</a></li>
+		</ul>
+	</li>
+	<li><a href=""><span class="icon" data-icon="u"></span>Usario</a>
+		<ul>
+			<li><a href="/usuarios"><span class="icon" data-icon="K"></span>Datos de usuario</a></li>
+			<li><a href="/contraseña"><span class="icon" data-icon="Z"></span>Cambiar contraseña</a></li>
+			<li><a href="/cerrar"><span class="icon" data-icon="L"></span>Cerrar Sesión</a></li>
+		</ul>
+	</li>
+	{% block encabezado %}{% endblock %}
+	 </section>
+	<section class='contenido'>
+	{% block contenido %}{% endblock %}
+  </section>
+
+</body>
+</html>
