@@ -5,9 +5,7 @@
 {% endblock %}
 {% block contenido %}
 	<form id='formulario' class="Contenido" method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
-		{{datospaciente.as_p}}
-		{{observaciones.as_p}}
-		<p><input type="hidden" id="id_usuario" name="usuario" value="{{usuario}}"></p>
+		{{formulario.as_p}}
 		<p><input type='submit' value='Registrar'/></p>
 	</form>
 {% endblock %}
