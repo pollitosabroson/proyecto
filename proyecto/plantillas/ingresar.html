@@ -4,12 +4,16 @@
 	<h1>Ingresa</h1>
 {% endblock %}
 {% block contenido %}
-	<img src="{{STATIC_URL}}carga/cardio_azul.jpg" class="titulo">
+	<img src="{{STATIC_URL}}carga/cardio_azul.jpg" class="imagen"height ="150" width ="200">
 	<div class="titulo">
 		<h2>Acceder</h2>
 	</div>
-	<form id='formulario' class="boxUniversal" method='post' action=''>{% csrf_token %}
+	<div>
+	<form id='formulario' class="boxUniversal" method='post' action=''>
+		
+		{% csrf_token %}
 		<table>{{formulario}}</table>
 		<p><input type='submit' value='Ingresar'/></p>
 	</form>
+	</div>
 {% endblock %}

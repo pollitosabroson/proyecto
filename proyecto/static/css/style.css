@@ -56,3 +56,8 @@ body{
 	margin-top: center;
 	width:300px;
 }
+
+.imagen{
+	display: block;
+	margin: auto;
+}

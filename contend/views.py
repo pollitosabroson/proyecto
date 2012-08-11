@@ -37,17 +37,37 @@ def ingresar(request):
 
 @login_required(login_url='/ingresar')
 def new_pacient(request):
-    if request.method =='POST':
-        datospaciente = DatosPaciente(request.POST )
-        observaciones = Observaciones(request.POST)
-        if datospaciente.is_valid() and observaciones.is_valid():
-            datospaciente.save()
-            observaciones.save()
+    if  request.method =='POST':
+        formulario = DatosPaciente(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect('/consulta')
+    else:
+        formulario = DatosPaciente()
+    return render_to_response ('citas.html',{'formulario':formulario}, context_instance=RequestContext(request))
+
+@login_required(login_url='/ingresar')
+def consulta(request, id_paciente):
+    dato = get_object_or_404(Paciente, pk= id_paciente)
+    consu = Consulta.object.filter(paciente = dato)
+    if request.method == 'POST':
+        formulario = Observaciones(request.POST)
+        if formulario.is_valid():
+            form = formulario.save(commit = False)
+            form.usuario = request.user
+            form. paciente= dato
+            form.save()
+            pag_user = '/consulta/%s' % id_paciente
+            return HttpResponseRedirect(pag_user)
+        else:
+            formulario = Observaciones()
+            if formulario.is_valid():
+                dat_user = formulario.cleand_data['dat_user']
+                usuario = request.user
             return HttpResponseRedirect('/')
     else:
-        datospaciente = DatosPaciente()
-        observaciones =Observaciones() 
-    return render_to_response('citas.html',{'datospaciente':datospaciente,'observaciones': observaciones},context_instance=RequestContext(request))
+        formulario = Observaciones()
+    return render_to_response('consulta.html',{'dato':dato,'formulario':formulario}, context_instance=RequestContext(request))
 
 
 @login_required(login_url='/ingresar')
