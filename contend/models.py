@@ -25,6 +25,7 @@ class Paciente(models.Model):
 	sexo = models.CharField (max_length=150,verbose_name='Sexo del paciente',choices = Sexo)
 	es_civil = models.CharField (max_length= 50, verbose_name ='Estado civil', choices= Estado_Civil)
 	fecha_registro = models.DateTimeField(auto_now=True)
+	usuario = models.ForeignKey(User)
 
 	def __unicode__(self):
 		return self.nombre
@@ -79,12 +80,11 @@ class Consulta(models.Model):
 		)
 	paciente = models.ForeignKey(Paciente)
 	enfermedades = models.CharField(max_length= 200,verbose_name='Descripción de la enfermedad', help_text='Separe las enfermades con una coma')
-	descripcionenfer = models.TextField(max_length = 300, verbose_name = 'Descripcionde la enfermedar')
+	descripcionenfer = models.TextField(max_length = 300, verbose_name = 'Descripcion de la enfermedad')
 	medicamento = models.CharField(max_length= 200)
 	descripcion = models.TextField(max_length=300, help_text='Cada cuando tomar el medicamento')
 	dia = models.CharField(max_length=130, verbose_name='Proxima cita', help_text='Dia',choices=Dias,blank= True)
 	mes= models.CharField(max_length=10,verbose_name='Mes',choices=Mes,blank= True)
 	tiempo_registro = models.DateTimeField(auto_now=True)
-	usuario = models.ForeignKey(User)
 	def __unicode__(self):
 		return self.enfermades

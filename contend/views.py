@@ -37,8 +37,11 @@ def ingresar(request):
 
 @login_required(login_url='/ingresar')
 def new_pacient(request):
+    #dato = get_object_or_404(Paciente, pk = id_usuario)
+    #a = User.objects.filter(user = dato)
     if  request.method =='POST':
-        formulario = DatosPaciente(request.POST)
+        a = request.usuario.id
+        formulario = DatosPaciente(request.POST, instance = a)
         if formulario.is_valid():
             formulario.save()
             return HttpResponseRedirect('/consulta')
@@ -54,7 +57,7 @@ def consulta(request, id_paciente):
         formulario = Observaciones(request.POST)
         if formulario.is_valid():
             form = formulario.save(commit = False)
-            form.usuario = request.user
+            form.usuario = Paciente.objects.latest('id')
             form. paciente= dato
             form.save()
             pag_user = '/consulta/%s' % id_paciente
