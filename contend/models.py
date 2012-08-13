@@ -25,7 +25,6 @@ class Paciente(models.Model):
 	sexo = models.CharField (max_length=150,verbose_name='Sexo del paciente',choices = Sexo)
 	es_civil = models.CharField (max_length= 50, verbose_name ='Estado civil', choices= Estado_Civil)
 	fecha_registro = models.DateTimeField(auto_now=True)
-	usuario = models.ForeignKey(User)
 
 	def __unicode__(self):
 		return self.nombre

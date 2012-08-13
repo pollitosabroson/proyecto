@@ -6,7 +6,6 @@ from contend.models import Paciente, Consulta
 class DatosPaciente(ModelForm):
 	class Meta:
 		model = Paciente
-		exclude = ('usuario')
 
 class Observaciones(ModelForm):
 	class Meta:

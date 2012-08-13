@@ -37,11 +37,8 @@ def ingresar(request):
 
 @login_required(login_url='/ingresar')
 def new_pacient(request):
-    #dato = get_object_or_404(Paciente, pk = id_usuario)
-    #a = User.objects.filter(user = dato)
     if  request.method =='POST':
-        a = request.usuario.id
-        formulario = DatosPaciente(request.POST, instance = a)
+        formulario = DatosPaciente(request.POST)
         if formulario.is_valid():
             formulario.save()
             return HttpResponseRedirect('/consulta')
@@ -50,27 +47,16 @@ def new_pacient(request):
     return render_to_response ('citas.html',{'formulario':formulario}, context_instance=RequestContext(request))
 
 @login_required(login_url='/ingresar')
-def consulta(request, id_paciente):
-    dato = get_object_or_404(Paciente, pk= id_paciente)
-    consu = Consulta.object.filter(paciente = dato)
+def consulta(request):
     if request.method == 'POST':
-        formulario = Observaciones(request.POST)
+        a = Paciente.objects.latest('id')
+        formulario = Observaciones(request.POST, instance = a)
         if formulario.is_valid():
-            form = formulario.save(commit = False)
-            form.usuario = Paciente.objects.latest('id')
-            form. paciente= dato
-            form.save()
-            pag_user = '/consulta/%s' % id_paciente
-            return HttpResponseRedirect(pag_user)
-        else:
-            formulario = Observaciones()
-            if formulario.is_valid():
-                dat_user = formulario.cleand_data['dat_user']
-                usuario = request.user
+            formulario.save()
             return HttpResponseRedirect('/')
     else:
         formulario = Observaciones()
-    return render_to_response('consulta.html',{'dato':dato,'formulario':formulario}, context_instance=RequestContext(request))
+    return render_to_response('consulta.html',{'formulario':formulario}, context_instance=RequestContext(request))
 
 
 @login_required(login_url='/ingresar')
