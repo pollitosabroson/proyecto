@@ -10,4 +10,4 @@ class DatosPaciente(ModelForm):
 class Observaciones(ModelForm):
 	class Meta:
 		model = Consulta
-		exclude = ('paciente')
+		
