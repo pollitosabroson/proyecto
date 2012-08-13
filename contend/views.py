@@ -36,8 +36,7 @@ def ingresar(request):
     return render_to_response('ingresar.html',{'formulario':formulario}, context_instance=RequestContext(request))	
 
 @login_required(login_url='/ingresar')
-def new_pacient(request, id_paciente):
-    a = get_object_or_404(Paciente)
+def new_pacient(request):
     if  request.method =='POST':
         formulario = DatosPaciente(request.POST)
         if formulario.is_valid():
